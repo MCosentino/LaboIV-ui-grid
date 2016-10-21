@@ -13,9 +13,12 @@ angular
     // Configuracion del idioma.
     i18nService.setCurrentLang('es');
 
+    $scope.MostrarMapa = function(){
+      console.log("hola");
+    }
+
     data.data().then(function(rta){
       // Cargo los datos en la grilla.
-      console.log(rta);
       $scope.gridOptions.data = rta;
     });
 
@@ -44,10 +47,8 @@ angular
           //filtro de los datos
           ,cellFilter: 'sexoTP'
         },
-        { field: 'fechaNacimiento', name: 'fechaNacimiento'
-          ,type: 'date'
-          ,cellFilter: "date: 'dd-MM-yyyy'"
-        }
+        { field: 'fechaNacimiento', name: 'fechaNacimiento', type: 'date', cellFilter: "date: 'dd-MM-yyyy'"},
+        {name:'datos', cellTemplate: "<button ng-click=\"grid.appScope.MostrarMapa()\">datos</button>"}
       ];
     }
   })
